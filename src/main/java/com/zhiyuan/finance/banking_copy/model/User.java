@@ -1,5 +1,9 @@
 package com.zhiyuan.finance.banking_copy.model;
-
+/**
+ * 
+ * @author zhiyuanyao
+ *
+ */
 public class User {
 	private String name;
 	private int age;

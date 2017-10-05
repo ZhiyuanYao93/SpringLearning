@@ -11,7 +11,11 @@ import com.zhiyuan.finance.banking_copy.model.PersonPersistence;
 //import com.zhiyuan.finance.banking_copy.controller.UserController;
 import com.zhiyuan.finance.banking_copy.model.User;
 import com.zhiyuan.finance.banking_copy.repository.PersonRepository;
-
+/**
+ * 
+ * @author zhiyuanyao
+ *
+ */
 @Service
 public class UserService {
 	Logger log = LoggerFactory.getLogger(UserService.class);
@@ -37,7 +41,10 @@ public class UserService {
 	}
 	
 	public PersonPersistence findById(int personId) {
-		log.info("Fetching data for{}",personId);
+		log.info("Fetching data for{} ",personId);
+		if (personRepository.findOne(personId) == null) {
+			throw new RuntimeException("Person Id not found");
+		}
 		PersonPersistence person = personRepository.findOne(personId);
 		return person;
 	}
@@ -45,6 +52,21 @@ public class UserService {
 	public List<PersonPersistence> findAllPerson(){
 		log.info("Fetching all person records");
 		return (List<PersonPersistence>) personRepository.findAll();
+	}
+	
+	public boolean deletePersonById(int personId) {
+		log.info("Trying to delete person with id: {}",personId);
+		if (personRepository.findOne(personId) == null) {
+			throw new RuntimeException("Person Id not found");
+		}
+		personRepository.delete(personId);
+		return (personRepository.findOne(personId) == null);
+	}
+	
+	public boolean deleteAll() {
+		log.info("Deleting all records");
+		personRepository.deleteAll();
+		return ((List<PersonPersistence>)personRepository.findAll()).size() == 0;
 	}
 		
 	
