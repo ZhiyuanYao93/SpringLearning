@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home page</title>
+</head>
+<body>
+<h1>Hello World</h1>
+<table>
+	<thead>
+		<tr> 
+			<th>ID</th>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tr th:each="record:${records}">
+        <td th:text="${record.personId}">999</td>
+        <td th:text="${record.fullName}">Full Name</td>
+    </tr>
+</table>
+</body>
+</html>

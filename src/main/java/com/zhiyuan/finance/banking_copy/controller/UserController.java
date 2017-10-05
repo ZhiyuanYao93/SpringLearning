@@ -37,7 +37,7 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+	 
 	@RequestMapping("/name")
 //	public List<User> fetchName() {
 //		List<User> userList = new ArrayList<User>();
