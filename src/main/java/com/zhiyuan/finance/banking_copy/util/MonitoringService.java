@@ -32,4 +32,6 @@ public class MonitoringService {
 		log.info("Exception:{}", npe.getLocalizedMessage());
 		log.info("Method {}",point.getSignature().getName());
 	}
+	
+	
 }

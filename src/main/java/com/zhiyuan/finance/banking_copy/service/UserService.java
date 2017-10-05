@@ -1,5 +1,7 @@
 package com.zhiyuan.finance.banking_copy.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +35,17 @@ public class UserService {
 		user.setUserId(p.getPersonId());
 		return user;	
 	}
+	
+	public PersonPersistence findById(int personId) {
+		log.info("Fetching data for{}",personId);
+		PersonPersistence person = personRepository.findOne(personId);
+		return person;
+	}
+	
+	public List<PersonPersistence> findAllPerson(){
+		log.info("Fetching all person records");
+		return (List<PersonPersistence>) personRepository.findAll();
+	}
+		
+	
 }
