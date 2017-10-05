@@ -158,3 +158,10 @@
 2017-10-04 18:41:28.395  INFO 8089 --- [http-nio-9090-exec-1] c.z.f.banking_copy.service.UserService   : Saving data for Mike
 2017-10-04 18:41:28.468  INFO 8089 --- [http-nio-9090-exec-1] c.z.f.b.util.MonitoringService           : Target:com.zhiyuan.finance.banking_copy.service.UserService@1e12a5a6
 2017-10-04 18:41:28.468  INFO 8089 --- [http-nio-9090-exec-1] c.z.f.b.util.MonitoringService           : After advice invoked createUser
+2017-10-04 19:04:03.621  INFO 8089 --- [http-nio-9090-exec-5] c.z.f.b.controller.UserController        : name: Mike
+2017-10-04 19:04:03.621  INFO 8089 --- [http-nio-9090-exec-5] c.z.f.b.controller.UserController        : city: San Jose
+2017-10-04 19:04:03.621  INFO 8089 --- [http-nio-9090-exec-5] c.z.f.b.util.MonitoringService           : Target:com.zhiyuan.finance.banking_copy.service.UserService@1e12a5a6
+2017-10-04 19:04:03.621  INFO 8089 --- [http-nio-9090-exec-5] c.z.f.b.util.MonitoringService           : Before advice invoked createUser
+2017-10-04 19:04:03.621  INFO 8089 --- [http-nio-9090-exec-5] c.z.f.banking_copy.service.UserService   : Saving data for Mike
+2017-10-04 19:04:03.629  INFO 8089 --- [http-nio-9090-exec-5] c.z.f.b.util.MonitoringService           : Target:com.zhiyuan.finance.banking_copy.service.UserService@1e12a5a6
+2017-10-04 19:04:03.629  INFO 8089 --- [http-nio-9090-exec-5] c.z.f.b.util.MonitoringService           : After advice invoked createUser
