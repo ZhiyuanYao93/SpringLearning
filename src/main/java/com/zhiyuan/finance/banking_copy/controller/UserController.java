@@ -79,7 +79,8 @@ public class UserController {
 		System.out.println("Got token: " + auth);
 		return "Validated: " + userId;
 	}
-	
+
+
 	@RequestMapping(value="/name",method=RequestMethod.POST)
 	public User createUser(@RequestBody User userObj) {
 		
