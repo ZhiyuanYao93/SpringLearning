@@ -10,11 +10,13 @@
 		<tr> 
 			<th>ID</th>
 			<th>Name</th>
+			<th>Age</th>
 		</tr>
 	</thead>
 	<tr th:each="record:${records}">
         <td th:text="${record.personId}">999</td>
         <td th:text="${record.fullName}">Full Name</td>
+        <td th:text="${record.age}">24</td>
     </tr>
 </table>
 </body>
