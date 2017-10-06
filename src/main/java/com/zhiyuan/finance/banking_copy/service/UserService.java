@@ -72,6 +72,18 @@ public class UserService {
 	public List<PersonPersistence> getPersonByNameAndAge(String name,int age){
 		return personRepository.findByFullNameAndAge(name, age);
 	}
+
+	public List<PersonPersistence> getPersonByPartialName(String name){
+		return personRepository.findByFullNameIgnoreCaseContaining(name);
+	}
+
+	public List<PersonPersistence> getPersonByCity(String city){
+		return personRepository.findByCityIgnoreCaseContaining(city);
+	}
+
+	public List<PersonPersistence> getPersonByAge(int age){
+		return personRepository.findByAge(age);
+	}
 		
 	
 }
