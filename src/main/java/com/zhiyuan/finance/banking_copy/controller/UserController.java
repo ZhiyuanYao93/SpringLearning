@@ -108,10 +108,25 @@ public class UserController {
 		return userService.deleteAll();
 	}
 	
-	@RequestMapping(value="/data")
+	@RequestMapping(value="/fetchbynameandage")
 	public List<PersonPersistence> fetchPersonByNameAndAge(@RequestParam(value="name") String name
 			,@RequestParam(value="age") int age){
 		return userService.getPersonByNameAndAge(name,age);
 	}
-	
+
+	@RequestMapping(value="/fetchbynamelike")
+	public List<PersonPersistence> fetchPersonByNameLike(@RequestParam(value="namepartial") String name){
+		return userService.getPersonByPartialName(name);
+	}
+
+	@RequestMapping(value="/fetchbycity")
+	public List<PersonPersistence> fetchPersonByCity(@RequestParam(value="city") String city){
+		return userService.getPersonByCity(city);
+	}
+
+	@RequestMapping(value="/fetchbyage")
+	public List<PersonPersistence> fetchPersonByCity(@RequestParam(value="age") int age){
+		return userService.getPersonByAge(age);
+	}
+
 }
