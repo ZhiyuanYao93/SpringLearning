@@ -105,4 +105,10 @@ public class UserController {
 		return userService.deleteAll();
 	}
 	
+	@RequestMapping(value="/data")
+	public List<PersonPersistence> fetchPersonByNameAndAge(@RequestParam(value="name") String name
+			,@RequestParam(value="age") int age){
+		return userService.getPersonByNameAndAge(name,age);
+	}
+	
 }
