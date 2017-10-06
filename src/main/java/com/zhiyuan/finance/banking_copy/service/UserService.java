@@ -68,6 +68,10 @@ public class UserService {
 		personRepository.deleteAll();
 		return ((List<PersonPersistence>)personRepository.findAll()).size() == 0;
 	}
+	
+	public List<PersonPersistence> getPersonByNameAndAge(String name,int age){
+		return personRepository.findByFullNameAndAge(name, age);
+	}
 		
 	
 }
