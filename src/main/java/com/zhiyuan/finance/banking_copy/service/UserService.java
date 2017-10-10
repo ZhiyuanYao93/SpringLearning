@@ -2,6 +2,7 @@ package com.zhiyuan.finance.banking_copy.service;
 
 import java.util.List;
 
+import com.zhiyuan.finance.banking_copy.DAO.PersonDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,10 @@ public class UserService {
 	Logger log = LoggerFactory.getLogger(UserService.class);
 	
 	@Autowired
-	PersonRepository personRepository;
+	private PersonRepository personRepository;
+
+	@Autowired
+	private PersonDAO personDAO;
 	
 	public User createUser(User user) {
 //		System.out.println("Received request to create: " + user.getName());
@@ -34,10 +38,16 @@ public class UserService {
 		personPersistence.setAge(user.getAge());
 		personPersistence.setCity(user.getCity());
 		personPersistence.setFullName(user.getName());
-		
-		PersonPersistence p = personRepository.save(personPersistence);
-		user.setUserId(p.getPersonId());
-		return user;	
+
+		personPersistence = personDAO.insertPerson(personPersistence);
+
+		//saving through Spring data.
+		//PersonPersistence p = personRepository.save(personPersistence);
+		user.setUserId(personPersistence.getPersonId());
+
+
+
+		return user;
 	}
 	
 	public PersonPersistence findById(int personId) {
