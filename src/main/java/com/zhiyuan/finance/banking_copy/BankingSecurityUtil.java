@@ -29,6 +29,7 @@ public class BankingSecurityUtil extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 				.antMatchers(HttpMethod.POST,"/name")
+
 				.hasRole("ADMIN")
 				.antMatchers(HttpMethod.GET,"/data")
 				.hasRole("USER")

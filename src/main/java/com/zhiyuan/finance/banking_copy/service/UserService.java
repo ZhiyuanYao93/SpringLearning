@@ -104,5 +104,7 @@ public class UserService {
 		return personDAO.getPersonByName(name);
 	}
 		
-	
+	public PersonPersistence createPerson(PersonPersistence personPersistence){
+		return personDAO.insertPerson(personPersistence);
+	}
 }

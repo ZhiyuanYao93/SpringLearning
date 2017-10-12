@@ -1,6 +1,8 @@
 package com.zhiyuan.finance.banking_copy.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 
@@ -29,6 +31,9 @@ public class PersonPersistence {
 	
 	@Column(name="usercity")
 	private String city;
+
+	@OneToMany(mappedBy = "personPersistence",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	Set<UserPersistence> userPersistenceSet = new HashSet<UserPersistence>();
 	
 	
 	public int getPersonId() {
@@ -56,5 +61,11 @@ public class PersonPersistence {
 		this.city = city;
 	}
 
+	public Set<UserPersistence> getUserPersistenceSet() {
+		return userPersistenceSet;
+	}
 
+	public void setUserPersistenceSet(Set<UserPersistence> userPersistenceSet) {
+		this.userPersistenceSet = userPersistenceSet;
+	}
 }

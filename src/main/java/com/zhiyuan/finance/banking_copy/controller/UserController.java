@@ -1,8 +1,11 @@
 package com.zhiyuan.finance.banking_copy.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import com.zhiyuan.finance.banking_copy.model.UserPersistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -140,4 +143,26 @@ public class UserController {
 
 	}
 
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value="/person",method=RequestMethod.POST)
+    public PersonPersistence createPerson(@RequestBody PersonPersistence personPersistence) {
+
+        System.out.println("name: " + personPersistence.getFullName());
+        System.out.println("age: " + personPersistence.getAge());
+        System.out.println("city: " + personPersistence.getCity());
+
+        log.info("name: {}",personPersistence.getFullName());
+        log.debug("age: {}",personPersistence.getAge());
+        log.info("city: {}",personPersistence.getCity());
+
+        Set<UserPersistence> userPersistenceSet = new HashSet<UserPersistence>();
+
+        for (UserPersistence userPersistence : personPersistence.getUserPersistenceSet()){
+            userPersistence.setPersonPersistence(personPersistence);
+            userPersistenceSet.add(userPersistence);
+        }
+
+        personPersistence.setUserPersistenceSet(userPersistenceSet);
+        return userService.createPerson(personPersistence);
+    }
 }
