@@ -94,6 +94,15 @@ public class UserService {
 	public List<PersonPersistence> getPersonByAge(int age){
 		return personRepository.findByAge(age);
 	}
+
+	public PersonPersistence updatePerson(int personId, String name){
+		return personDAO.updatePerson(personId,name);
+
+	}
+
+	public List<PersonPersistence> getPersonByName(String name){
+		return personDAO.getPersonByName(name);
+	}
 		
 	
 }

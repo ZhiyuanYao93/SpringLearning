@@ -14,4 +14,6 @@ public interface PersonDAO {
     public PersonPersistence fetchPerson(int personId);
 
     public List<PersonPersistence> fetchAllPerson();
+
+    public List<PersonPersistence> getPersonByName(String name);
 }

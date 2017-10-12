@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import java.util.List;
 
@@ -42,7 +43,14 @@ public class PersonDAOImpl implements PersonDAO{
 
     @Override
     public PersonPersistence updatePerson(int personId, String name) {
-        return null;
+        PersonPersistence personPersistence = entityManager.find(PersonPersistence.class,personId);
+        if (personPersistence == null){
+            log.error("Person with id {} not found",personId);
+            throw new RuntimeException("Person not found with ID: " + personId);
+        }
+        //personPersistence.setFullName(name);
+        entityManager.persist(personPersistence);
+        return personPersistence;
     }
 
     @Override
@@ -58,5 +66,12 @@ public class PersonDAOImpl implements PersonDAO{
     @Override
     public List<PersonPersistence> fetchAllPerson() {
         return null;
+    }
+
+    @Override
+    public List<PersonPersistence> getPersonByName(String name) {
+        Query query = entityManager.createNamedQuery("fetchbyname",PersonPersistence.class).setParameter(1,name);
+        List<PersonPersistence> result = query.getResultList();
+        return result;
     }
 }

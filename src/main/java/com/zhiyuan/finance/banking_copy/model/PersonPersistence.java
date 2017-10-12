@@ -1,11 +1,7 @@
 package com.zhiyuan.finance.banking_copy.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 /**
  * 
  * @author zhiyuanyao
@@ -13,6 +9,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="PERSON")
+@NamedQueries({
+	@NamedQuery(name="fetchbyname",query="SELECT p FROM PersonPersistence p WHERE p.fullName=?"),
+		@NamedQuery(name="fetchbyage",query="SELECT p FROM PersonPersistence p WHERE p.age=?")
+
+})
 public class PersonPersistence {
 	//variable name has NOTHING to do with column names in DB table. 
 	@Id
@@ -54,4 +55,6 @@ public class PersonPersistence {
 	public void setCity(String city) {
 		this.city = city;
 	}
+
+
 }

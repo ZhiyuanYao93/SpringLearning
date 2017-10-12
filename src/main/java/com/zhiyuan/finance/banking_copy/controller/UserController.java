@@ -129,4 +129,15 @@ public class UserController {
 		return userService.getPersonByAge(age);
 	}
 
+	@RequestMapping(value = "/person/{id}",method = RequestMethod.PUT)
+	public PersonPersistence updatePerson(@PathVariable(value = "id") int personId,@RequestParam (value="name") String personName){
+		return userService.updatePerson(personId,personName);
+	}
+
+	@RequestMapping(value = "/person/name")
+	public List<PersonPersistence> getPersonByName(@RequestParam(value = "name") String name){
+		return userService.getPersonByName(name);
+
+	}
+
 }
