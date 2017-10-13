@@ -36,6 +36,5 @@ public class BankingSecurityUtil extends WebSecurityConfigurerAdapter {
 				.and()
 				.csrf()
 				.disable();
-		
 	}
 }
